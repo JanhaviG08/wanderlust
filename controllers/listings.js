@@ -1,8 +1,8 @@
 const { query, response } = require("express");
 const Listing = require("../models/listing");
-const mbxGeocoding = require("@mapbox/mapbox-sdk/services/geocoding")
+const mbxGeocoding = require("@mapbox/mapbox-sdk/services/geocoding");
 const mapToken = process.env.MAP_TOKEN;
-const geocodingClient = mbxGeocoding({ accessToken: mapToken});
+const geocodingClient = mbxGeocoding({ accessToken: mapToken });
 
 module.exports.index = async (req, res) => {
     const allListings = await Listing.find({});
@@ -19,14 +19,15 @@ module.exports.showListing = async (req, res) => {
     .populate({
         path: "reviews",
         populate:{
-            path: "author"
-        } 
+            path: "author",
+        }, 
     })
     .populate("owner");
     if (!listing) {
         req.flash("error", "Listing you requested for does not exist!");
         res.redirect("/listings");
     }
+    console.log(listing);
     res.render("listings/show.ejs", { listing });
 };
 
@@ -39,6 +40,7 @@ module.exports.createListing = async (req, res, next) => {
     
     let url = req.file.path;
     let filename = req.file.filename;
+    
     const newListing = new Listing(req.body.listing);
     newListing.owner = req.user._id;
     newListing.image = {url, filename};
