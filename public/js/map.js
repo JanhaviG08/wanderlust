@@ -1,5 +1,3 @@
-const Listing = require("../models/listing");
-
 mapboxgl.accessToken = mapToken;
 
 const map = new mapboxgl.Map({
@@ -17,3 +15,4 @@ const marker = new mapboxgl.Marker({color: "red" })
     )
 )
 .addTo(map);
+
