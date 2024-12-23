@@ -19,9 +19,30 @@
     padding: 0.5rem 3rem 0.5rem 3rem;
     font-size: 1rem;
   }
+
+  .navbar .btnlogin-popup{
+    width: 90px;
+    height: 50px;
+    text-align: center;
+    background: transparent;
+    border: 2px solid #fff;
+    outline: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 1.1em;
+    color: #fff;
+    font-weight: 500;
+    margin-left: 8px;
+    margin-right: 8px;
+    transition: .5s;
+}
+.navbar .btnlogin-popup:hover{
+    background:  #fe424d;
+    color: #fff;
+} 
 </style>
 
-<nav class="navbar navbar-expand-md bg-body-light border-bottom sticky-top" >
+<nav class="navbar navbar-expand-md bg-body-light border-bottom sticky-top " >
   <div class="container-fluid">
     <a class="navbar-brand" href="/listings"><i class="fa-regular fa-compass"></i></a>
     <button class="navbar-toggler" 
@@ -33,7 +54,7 @@
 
     <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
       <div class="navbar-nav">
-        <a class="nav-link" href="/listings">Explore</a>
+        <a class="nav-link" href="/listings"><b>Wanderlust</b></a>
       </div>
 
       <div class="navbar-nav ms-auto">
@@ -50,14 +71,14 @@
       </div>
 
       <div class="navbar-nav ms-auto">
-        <a class="nav-link" href="/listings/new">Airbnb your home</a>
+        <a class="nav-link " href="/listings/new"> <b>Airbnb your home</b> </a>
         
         <% if(!currUser) { %>
-        <a class="nav-link" href="/signup"> <b>Sign up</b> </a>
-        <a class="nav-link" href="/login"> <b>Log in</b> </a>
+        <a class="nav-link btnlogin-popup" href="/signup"> <b>Sign up</b> </a>
+        <a class="nav-link btnlogin-popup" href="/login"> <b>Log in</b> </a>
         <% } %>
         <% if(currUser) { %>
-        <a class="nav-link" href="/logout"> <b>Log out</b> </a>
+        <a class="nav-link btnlogin-popup" href="/logout"> <b>Log out</b> </a>
         <% } %>
       </div>
     </div>
